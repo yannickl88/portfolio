@@ -1,0 +1,62 @@
+.container {
+  position: relative;
+
+  .tooltip {
+    position: absolute;
+    background: var(--background);
+    padding: 7px 10px;
+    font-size: 16px;
+    font-weight: normal;
+    text-decoration: none;
+    color: var(--text);
+    white-space: nowrap;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    &:before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      background: var(--background);
+      width: 16px;
+      height: 16px;
+      transform: rotate(45deg);
+      z-index: -1;
+    }
+
+    &.tooltipTop {
+      top: -50px;
+
+      &:before {
+        bottom: -8px;
+      }
+    }
+
+    &.tooltipBottom {
+      bottom: -50px;
+
+      &:before {
+        top: -8px;
+      }
+    }
+
+    &.tooltipLeft {
+      left: -20px;
+
+      &:before {
+        left: 24px;
+      }
+    }
+
+    &.tooltipRight {
+      right: -20px;
+
+      &:before {
+        right: 24px;
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+.splitBanner {
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  gap: 40px;
+  max-width: 1024px;
+
+  p {
+    text-align: justify;
+    line-height: 1.3em;
+  }
+}
+
+.splitBanner1 {
+  grid-template-columns: 2fr 1fr;
+}
+
+.splitBanner2 {
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skillsTitle {
+  font-family: monospace;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.gif {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 200px;
+    border-radius: 50%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .splitBanner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    p {
+      text-align: left;
+    }
+  }
+  .splitBanner2 {
+    margin-top: 20px;
+  }
+}

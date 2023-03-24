@@ -1,0 +1,116 @@
+.navigation {
+  position: fixed;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 20px 50px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: var(--color-overlay);
+  z-index: 100;
+}
+
+.sections {
+  display: flex;
+  gap: 30px;
+}
+
+.home {
+  font-weight: bolder;
+  font-size: 30px;
+  color: #000;
+  background: rgb(14, 12, 59);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 3px solid transparent;
+  transition: border-color 500ms;
+  cursor: pointer;
+
+  &.active {
+    border-bottom: 3px solid var(--accent-color-active);
+  }
+}
+
+.section {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  border-bottom: 3px solid transparent;
+  transition: border-color 500ms;
+  cursor: pointer;
+
+  .sectionNumber {
+    color: var(--accent-color-font);
+    font-family: monospace;
+  }
+
+  &.active {
+    border-bottom: 3px solid var(--accent-color-active);
+  }
+}
+
+.menu {
+  display: none;
+}
+
+.flyoutContainer {
+  display: none;
+
+  .flyout {
+    position: fixed;
+    width: 70vw;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: var(--gray-700);
+    border-left: 1px solid var(--gray-600);
+    transition: background-color 500ms;
+  }
+
+  .flyoutGlass {
+    content: '';
+    position: fixed;
+    background: var(--color-overlay);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  &.open {
+    display: block;
+  }
+}
+
+.flyoutClose {
+  position: absolute;
+  right: 10px;
+  top: 23px;
+  padding: 10px;
+}
+
+.flyoutContent {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .navigation {
+    padding: 20px;
+  }
+
+  .sections {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
+}

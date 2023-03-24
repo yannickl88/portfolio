@@ -1,0 +1,215 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+body,
+html {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+body {
+  --accent-color: #593da3;
+  --accent-color-font: #593da3;
+  --accent-color-active: #9e43d2;
+  --color-text: #333;
+  --color-overlay: rgba(255, 255, 255, 0.8);
+  --accent-gradient: linear-gradient(
+    45deg,
+    rgba(14, 12, 59, 1) 0%,
+    rgba(122, 1, 136, 1) 50%,
+    rgba(21, 187, 221, 1) 100%
+  );
+  --gray-700: #ffffff;
+  --gray-600: #f6f6f6;
+  --gray-500: #cccccc;
+  --gray-400: #888888;
+  --gray-300: #3d3d3d;
+  --gray-200: #181818;
+  --gray-100: #000000;
+
+  background: #eee;
+  color: var(--color-text);
+  transition-property: background-color, color;
+  transition-duration: 500ms;
+  font-size: 18px;
+
+  .separator {
+    border-bottom: 1px solid var(--gray-500);
+    margin: 0 50px;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+
+    &.fancy-link[target="_blank"] {
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0px;
+        bottom: -1px;
+        left: 0;
+        opacity: 0;
+        border: 1px solid var(--accent-color);
+        transition: width 300ms, opacity 500ms;
+      }
+
+      &:hover:after {
+        opacity: 1;
+        width: 100%;
+      }
+    }
+  }
+
+  p {
+    margin: 0 0 1em 0;
+  }
+
+  .button {
+    padding: 16px 24px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: normal;
+    outline: 0;
+    border: 0;
+    color: inherit;
+    background: var(--gray-700);
+    border-radius: 5px;
+    transition-property: background-color;
+    transition-duration: 200ms;
+
+    &:hover {
+      cursor: pointer;
+      background: var(--gray-600);
+    }
+
+    &.button-icon {
+      display: inline-flex;
+      gap: 10px;
+    }
+
+    &.primary {
+      background: var(--accent-color);
+      color: #fff;
+
+      &:hover {
+        background: var(--accent-color-active);
+      }
+    }
+  }
+
+  .icon {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      fill: var(--color-text);
+      transition-property: fill;
+      transition-duration: 200ms;
+    }
+
+    &.disabled {
+      --color-text: var(--gray-400);
+    }
+  }
+
+  .skill-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--gray-700);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: monospace;
+    transition-property: background-color;
+    transition-duration: 200ms;
+    color: inherit;
+    font-weight: inherit;
+    cursor: default;
+
+    &.skill-badge-icon {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    &:hover {
+      background: var(--gray-600);
+    }
+  }
+
+  .tooltip {
+    --background: var(--gray-100);
+    --text: var(--gray-700);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input,
+    textarea {
+      padding: 20px;
+      border-radius: 5px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 0;
+      background: var(--gray-700);
+      font-family: inherit;
+      font-size: 16px;
+      outline: 2px solid transparent;
+      transition-property: background-color, outline;
+      transition-duration: 200ms;
+
+      &:focus {
+        outline: 2px solid var(--accent-color-active);
+      }
+
+      &::placeholder {
+        font-family: monospace;
+      }
+    }
+
+    textarea {
+      min-height: 200px;
+    }
+  }
+}
+
+body.dark-mode {
+  background: #35374f;
+
+  --accent-color-font: #7756d0;
+  --color-overlay: rgba(27, 31, 54, 0.8);
+  --color-text: #eee;
+  --accent-gradient: linear-gradient(
+    45deg,
+    rgb(157, 144, 241) 0%,
+    rgb(169, 29, 185) 50%,
+    rgba(21, 187, 221, 1) 100%
+  );
+  --gray-700: #16161c;
+  --gray-600: #16161c;
+  --gray-500: #1b1f36;
+  --gray-400: #606583;
+  --gray-300: #888888;
+  --gray-200: #cccccc;
+  --gray-100: #ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  .separator {
+    display: none;
+  }
+}
