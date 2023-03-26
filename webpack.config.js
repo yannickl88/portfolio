@@ -6,7 +6,6 @@ module.exports = (env, argv) => {
     entry: "./src/index.tsx",
     devtool: argv.mode !== "production" ? "inline-source-map" : false,
     output: {
-      publicPath: "/",
       path: path.resolve(__dirname, "dist"),
     },
     optimization: {
