@@ -14,12 +14,8 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.(webp|gif)$/i,
+          test: /\.(webp|gif|svg)$/i,
           type: "asset/resource",
-        },
-        {
-          test: /\.svg$/,
-          loader: "svg-inline-loader",
         },
         {
           test: /\.tsx?$/,
