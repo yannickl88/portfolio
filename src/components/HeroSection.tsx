@@ -1,6 +1,7 @@
-import React, { MutableRefObject } from "react";
+import React, { MutableRefObject, useEffect, useRef } from "react";
 import style from "./HeroSection.module.less";
 import { scrollTo } from "../lib/scroll-to";
+import { animateBackground } from "../lib/animateBackground";
 
 declare type HeroSectionProps = {
   refPortfolio: MutableRefObject<HTMLElement>;
@@ -12,8 +13,19 @@ function scrollToRef(element: MutableRefObject<HTMLElement>) {
 }
 
 export function HeroSection({ refPortfolio, refContact }: HeroSectionProps) {
+  const ref = useRef<HTMLCanvasElement>();
+
+  useEffect(() => {
+    if (ref.current) {
+      const animation = animateBackground(ref.current);
+
+      return () => animation.stop();
+    }
+  }, [ref]);
+
   return (
     <div className={style.section}>
+      <canvas ref={ref} className={style.canvas} />
       <div>
         <h1 className={style.header}>
           <span className={style.headerText}>Hello, I'm Yannick</span>
