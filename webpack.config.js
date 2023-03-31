@@ -1,5 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
+
+const { GA_PROPERTY } = process.env;
 
 module.exports = (env, argv) => {
   return {
@@ -7,6 +10,7 @@ module.exports = (env, argv) => {
     devtool: argv.mode !== "production" ? "inline-source-map" : false,
     output: {
       path: path.resolve(__dirname, "dist"),
+      clean: true,
     },
     optimization: {
       runtimeChunk: "single",
@@ -51,6 +55,15 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: "./src/index.html",
+      }),
+      new HtmlWebpackPartialsPlugin({
+        inject: GA_PROPERTY !== undefined && argv.mode === "production",
+        path: "./analytics.html",
+        location: "head",
+        priority: "high",
+        options: {
+          ga_property_id: GA_PROPERTY,
+        },
       }),
     ],
     devServer: {
