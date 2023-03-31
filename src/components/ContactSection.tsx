@@ -47,13 +47,13 @@ export function ContactSection() {
             <div className="form-row">
               <input
                 type="email"
-                title="email"
+                name="email"
                 placeholder="&lt; E-mail /&gt;"
               />
             </div>
             <div className="form-row">
               <textarea
-                title="message"
+                name="message"
                 placeholder="&lt; Epic Message /&gt;"
               ></textarea>
             </div>
