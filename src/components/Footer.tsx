@@ -51,6 +51,17 @@ export function Footer() {
               Webpack
             </a>
           </div>
+          <div className={style.sourceCode}>
+            Check out the source code at{" "}
+            <a
+              href="https://github.com/yannickl88/portfolio"
+              rel="noreferrer"
+              target="_blank"
+            >
+              github.com
+            </a>
+            .
+          </div>
         </div>
         <div className={style.copyright}>
           &copy; 2023 &mdash; Yannick de Lange

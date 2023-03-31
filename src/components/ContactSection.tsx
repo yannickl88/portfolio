@@ -43,10 +43,7 @@ export function ContactSection() {
         </div>
         <div className={classNames("separator", style.separator)}></div>
         <div>
-          <form className="form">
-            <div className="form-row">
-              <input type="text" title="name" placeholder="&lt; Name /&gt;" />
-            </div>
+          <form className="form" action={CONTACT_FORM_URL} method="POST">
             <div className="form-row">
               <input
                 type="email"

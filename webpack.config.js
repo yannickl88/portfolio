@@ -1,8 +1,9 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
 
-const { GA_PROPERTY } = process.env;
+const { GA_PROPERTY, CONTACT_FORM_URL } = process.env;
 
 module.exports = (env, argv) => {
   return {
@@ -55,6 +56,9 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: "./src/index.html",
+      }),
+      new webpack.DefinePlugin({
+        CONTACT_FORM_URL: JSON.stringify(CONTACT_FORM_URL ?? ""),
       }),
       new HtmlWebpackPartialsPlugin({
         inject: GA_PROPERTY !== undefined && argv.mode === "production",
