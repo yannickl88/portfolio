@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
 
-const { GA_PROPERTY, CONTACT_FORM_URL } = process.env;
+const { GTM_PROPERTY, CONTACT_FORM_URL } = process.env;
 
 module.exports = (env, argv) => {
   return {
@@ -60,15 +60,26 @@ module.exports = (env, argv) => {
       new webpack.DefinePlugin({
         CONTACT_FORM_URL: JSON.stringify(CONTACT_FORM_URL ?? ""),
       }),
-      new HtmlWebpackPartialsPlugin({
-        inject: GA_PROPERTY !== undefined && argv.mode === "production",
-        path: "./analytics.html",
-        location: "head",
-        priority: "high",
-        options: {
-          ga_property_id: GA_PROPERTY,
+      new HtmlWebpackPartialsPlugin([
+        {
+          inject: GTM_PROPERTY !== undefined && argv.mode === "production",
+          path: "./analytics.html",
+          location: "head",
+          priority: "high",
+          options: {
+            gtm_property_id: GTM_PROPERTY,
+          },
         },
-      }),
+        {
+          inject: GTM_PROPERTY !== undefined && argv.mode === "production",
+          path: "./analytics-no-script.html",
+          location: "body",
+          priority: "high",
+          options: {
+            gtm_property_id: GTM_PROPERTY,
+          },
+        },
+      ]),
     ],
     devServer: {
       static: "./dist",
