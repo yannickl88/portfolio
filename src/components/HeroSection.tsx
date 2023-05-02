@@ -3,7 +3,7 @@ import style from "./HeroSection.module.less";
 import { scrollTo } from "../lib/scroll-to";
 import { animateBackground } from "../lib/animateBackground";
 
-declare type HeroSectionProps = {
+type Props = {
   refPortfolio: MutableRefObject<HTMLElement>;
   refContact: MutableRefObject<HTMLElement>;
 };
@@ -12,7 +12,7 @@ function scrollToRef(element: MutableRefObject<HTMLElement>) {
   scrollTo(element.current, 1000);
 }
 
-export function HeroSection({ refPortfolio, refContact }: HeroSectionProps) {
+export function HeroSection({ refPortfolio, refContact }: Props) {
   const ref = useRef<HTMLCanvasElement>();
 
   useEffect(() => {

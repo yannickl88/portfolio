@@ -1,77 +1,22 @@
 import style from "./Navigation.module.less";
 import classNames from "classnames";
 import React, { MutableRefObject, useEffect, useMemo, useState } from "react";
-import { scrollTo } from "../lib/scroll-to";
 import { Icon } from "./Icon";
 import iconBars from "../../images/icons/bars.svg";
 import iconClose from "../../images/icons/close.svg";
+import { ActivePageName, MenuItems } from "./MenuItems";
+import { scrollTo } from "../lib/scroll-to";
 
-declare type ActivePageName = "home" | "about" | "portfolio" | "contact";
-declare type NavigationProps = {
+type Props = {
   refHero: MutableRefObject<HTMLElement>;
   refAbout: MutableRefObject<HTMLElement>;
   refPortfolio: MutableRefObject<HTMLElement>;
   refContact: MutableRefObject<HTMLElement>;
   onChange?: (active: ActivePageName) => void;
 };
-declare type MenuItemsProps = {
-  refAbout: MutableRefObject<HTMLElement>;
-  refPortfolio: MutableRefObject<HTMLElement>;
-  refContact: MutableRefObject<HTMLElement>;
-  activePage: ActivePageName;
-  onNavigate?: () => void;
-};
 
 function scrollToRef(element: MutableRefObject<HTMLElement>) {
   scrollTo(element.current, 1000);
-}
-
-function MenuItems({
-  refAbout,
-  refPortfolio,
-  refContact,
-  activePage,
-  onNavigate,
-}: MenuItemsProps) {
-  function scrollTo(element: MutableRefObject<HTMLElement>) {
-    scrollToRef(element);
-    onNavigate?.();
-  }
-
-  return (
-    <>
-      <a
-        className={classNames(
-          style.section,
-          activePage === "about" ? style.active : null
-        )}
-        onClick={() => scrollTo(refAbout)}
-      >
-        <span className={style.sectionNumber}>01.</span>
-        <span>About</span>
-      </a>
-      <a
-        className={classNames(
-          style.section,
-          activePage === "portfolio" ? style.active : null
-        )}
-        onClick={() => scrollTo(refPortfolio)}
-      >
-        <span className={style.sectionNumber}>02.</span>
-        <span>Portfolio</span>
-      </a>
-      <a
-        className={classNames(
-          style.section,
-          activePage === "contact" ? style.active : null
-        )}
-        onClick={() => scrollTo(refContact)}
-      >
-        <span className={style.sectionNumber}>03.</span>
-        <span>Contact</span>
-      </a>
-    </>
-  );
 }
 
 export function Navigation({
@@ -80,7 +25,7 @@ export function Navigation({
   refPortfolio,
   refContact,
   onChange,
-}: NavigationProps) {
+}: Props) {
   const [scroll, setScroll] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
 

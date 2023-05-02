@@ -40,6 +40,8 @@ jobs:
         uses: bahmutov/npm-install@v1
       - name: Yarn install
         run: yarn --frozen-lockfile
+      - name: Test
+        run: yarn test
       - name: Build
         run: yarn build
       - name: Setup Pages
