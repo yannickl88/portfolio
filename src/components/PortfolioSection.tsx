@@ -2,6 +2,7 @@ import React from "react";
 import style from "./PortfolioSection.module.less";
 import thumbMinimovers from "../../images/minimovers.webp";
 import thumbPrentApp from "../../images/prentapp.webp";
+import thumbPortfolioSite from "../../images/portfoliosite.webp";
 import iconGithub from "../../images/icons/github.svg";
 import iconPlaystore from "../../images/icons/playstore.svg";
 import iconOpenInNew from "../../images/icons/open_in_new.svg";
@@ -108,12 +109,64 @@ function PrentApp() {
   );
 }
 
+function PortfolioSite() {
+  return (
+    <div className={classNames(style.project)}>
+      <img src={thumbPortfolioSite} alt="My portfolio website" />
+      <div>
+        <div></div>
+        <h3>My portfolio website</h3>
+        <p>
+          Site you are currently viewing which is my little spot on the
+          internet. Here is where I showcase my recent projects and allows me to
+          link to other platforms.
+        </p>
+        <p>
+          The site has been designed and build by myself and created as a test
+          site to create something in React but ended up as the first version of
+          my portfolio. It is deployed using Github actions to github pages for
+          hosting.
+        </p>
+        <div className={style.projectTech}>
+          <span className="skill-badge">React</span>
+          <span className="skill-badge">TypeScript</span>
+          <span className="skill-badge">HTML</span>
+          <span className="skill-badge">LESS</span>
+          <span className="skill-badge">Github</span>
+        </div>
+        <div className={style.projectLinks}>
+          <a
+            className={style.projectLink}
+            href="https://github.com/yannickl88/portfolio"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Portfolio Github link"
+          >
+            <Icon icon={iconGithub} />
+          </a>
+          <a
+            className={style.projectLink}
+            href="https://yannickdelange.nl/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Portfolio home page"
+          >
+            <Icon icon={iconOpenInNew} />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function PortfolioSection() {
   return (
     <Section title={"Portfolio"} titleNo={"02"} flipTitle={true}>
       <Minimovers />
       <div className="separator"></div>
       <PrentApp />
+      <div className="separator"></div>
+      <PortfolioSite />
     </Section>
   );
 }
